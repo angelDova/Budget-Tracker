@@ -12,11 +12,21 @@ import {
   Button,
 } from "@nextui-org/react";
 import Logo from "./logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { User, currentUser } from "@clerk/nextjs/server";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { Loader } from "lucide-react";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const menuItems = [
     "Profile",
     "Dashboard",
@@ -62,14 +72,35 @@ const Nav = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
+        <ClerkLoading>
+          <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
+        </ClerkLoading>
+
+        <ClerkLoaded>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <NavbarItem className="hidden lg:flex">
+                <Link href="/sign-in">Login</Link>
+              </NavbarItem>
+            </SignInButton>
+
+            <SignUpButton mode="modal">
+              <NavbarItem>
+                <Button
+                  as={Link}
+                  color="warning"
+                  href="/sign-up"
+                  variant="flat"
+                >
+                  Sign Up
+                </Button>
+              </NavbarItem>
+            </SignUpButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+        </ClerkLoaded>
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
