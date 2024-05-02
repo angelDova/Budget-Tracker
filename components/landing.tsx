@@ -22,7 +22,7 @@ export const Landing = () => {
 
   return (
     <div>
-      <div className="relative mx-auto min-h-screen max-w-5xl items-center justify-center space-y-80 px-4 pb-16 pt-32 sm:px-6 md:pb-32 md:pt-52">
+      <div className="relative mx-auto min-h-screen max-w-5xl space-y-80 px-4 pb-16 pt-32 sm:px-6 md:pb-32 md:pt-52">
         {/* Hero */}
         <Hero />
 
