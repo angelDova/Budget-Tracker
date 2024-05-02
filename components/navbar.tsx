@@ -44,12 +44,12 @@ const Nav = () => {
     <Navbar
       shouldHideOnScroll
       isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      //   isMenuOpen={isMenuOpen}
+      //   onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="sm:hidden"
+        className="backdrop:blur sm:hidden"
       />
       <NavbarBrand>
         <Logo />
