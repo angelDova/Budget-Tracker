@@ -76,7 +76,7 @@ const config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(), require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;
