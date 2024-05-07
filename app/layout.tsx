@@ -6,6 +6,7 @@ import RootProviders from "@/components/providers/root-providers";
 import Nav from "@/components/navbar";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { NextUIProvider } from "@nextui-org/react";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         }}
       >
         <body className={inter.className}>
+          <Toaster richColors position="bottom-right" />
           <RootProviders>
             <Nav />
             <NextUIProvider>
