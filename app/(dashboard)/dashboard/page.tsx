@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import CreateTransactionDialog from "./_components/create-transation-dialog";
+import CreateTransactionDialog from "./_components/create-transaction-dialog";
+import Overview from "./_components/overview";
+import History from "./_components/history";
 
 async function page() {
   const user = await currentUser();
@@ -53,6 +55,8 @@ async function page() {
           </div>
         </div>
       </div>
+      <Overview userSettings={userSettings} />
+      <History userSettings={userSettings} />
     </div>
   );
 }
